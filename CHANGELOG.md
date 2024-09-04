@@ -1,3 +1,10 @@
+# [1.1.0](https://github.com/echaoeoen/app-context/compare/v1.0.4...v1.1.0) (2024-09-04)
+
+
+### Features
+
+* add express and fastify middleware ([f83a784](https://github.com/echaoeoen/app-context/commit/f83a78491557f6c7b2a5073ef03ebc1c0db450e4))
+
 ## [1.0.4](https://github.com/echaoeoen/app-context/compare/v1.0.3...v1.0.4) (2024-09-04)
 
 

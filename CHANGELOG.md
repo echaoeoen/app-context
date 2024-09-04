@@ -1,3 +1,10 @@
+## [1.0.4](https://github.com/echaoeoen/app-context/compare/v1.0.3...v1.0.4) (2024-09-04)
+
+
+### Bug Fixes
+
+* semantic release ([c9106ad](https://github.com/echaoeoen/app-context/commit/c9106adc996a4630eb8b64a03119053ab0eefc3a))
+
 ## [1.0.3](https://github.com/echaoeoen/app-context/compare/v1.0.2...v1.0.3) (2024-09-04)
 
 

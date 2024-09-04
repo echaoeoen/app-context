@@ -1,10 +1,9 @@
-import fastify, { FastifyBaseLogger, FastifyInstance } from "fastify";
+import { FastifyInstance } from "fastify";
 import * as middie from '@fastify/middie'
-import { IncomingMessage } from "http";
-import AppContext from "../app-context";
-export interface RequestContext<T> {
-    req: IncomingMessage;
-    data: T;
+import { IncomingMessage, ServerResponse } from "http";
+import AppContext, { ObjectType } from "../app-context";
+type FastifyRequestContext<T extends ObjectType<T>> = T & {
+    req: IncomingMessage & middie.IncomingMessageExtended;
 }
 /**
  * Registers the AppContext middleware with the given Fastify instance.
@@ -16,15 +15,15 @@ export interface RequestContext<T> {
  * @returns A promise that resolves when the middleware has been registered.
  */
 
-export const registerFastifyAppContext = async <T>(instance: FastifyInstance) => {
+export const registerFastifyAppContext = async <T extends ObjectType<T>>(instance: FastifyInstance, preRequestFn: (req: IncomingMessage, res: ServerResponse<IncomingMessage>) => void) => {
     await instance.register(middie);
     instance.use((req, res, next) => {
-        const context = AppContext.context<RequestContext<T>>();
-        context.startContext(() => {
+        const context = AppContext.context<FastifyRequestContext<T>>();
+        context.startContext(async () => {
             context.set({
-                req,
-                data: {} as T,
-            });
+                req
+            } as unknown as Partial<FastifyRequestContext<T>>);
+            await Promise.resolve(preRequestFn(req, res));
             next();
         });
     })
@@ -34,14 +33,14 @@ export const registerFastifyAppContext = async <T>(instance: FastifyInstance) =>
  * Gets the current Fastify context.
  * @returns The current Fastify context.
  */
-export const getFastifyContext = <T>() => {
-    return AppContext.context<RequestContext<T>>().get();
+export const getFastifyContext = <T extends ObjectType<T>>() => {
+    return AppContext.context<FastifyRequestContext<T>>().get();
 }
 
 /**
  * Sets the current Fastify context.
  * @param contextData The context data to set.
  */
-export const setFastifyContext = <T>(contextData: Partial<RequestContext<T>>) => {
-    AppContext.context<RequestContext<T>>().set(contextData);
+export const setFastifyContext = <T extends ObjectType<T>>(contextData: Partial<FastifyRequestContext<T>>) => {
+    AppContext.context<FastifyRequestContext<T>>().set(contextData);
 }

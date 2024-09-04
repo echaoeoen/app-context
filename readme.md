@@ -81,6 +81,7 @@ appContext.set({ userId: '67890' });
 
 ## Example Use Case
 
+### Vanila nodeJS
 The `AppContext` library is particularly useful in scenarios where you need to manage shared context in applications with complex asynchronous workflows, such as:
 
 - Request handling in an API server
@@ -109,6 +110,79 @@ async function handleRequest() {
 handleRequest();
 ```
 
+### Express
+
+```typescript
+import express, { Request, Response } from 'express';
+import AppContext, { expressAppContext, getExpressContext, setExpressContext, ExpressRequestContext } from 'node-application-context';
+
+const app = express();
+interface ContextData {
+  user: UserData
+}
+// Pre-request function to be executed before each request is handled
+const preRequestFn = async (req: Request, res?: Response) => {
+  console.log('Pre-request function is called!');
+  const userData = await someRepo.getUser(req.session.userId);
+  setExpressContext({user: userData});
+};
+
+// Apply the AppContext middleware to handle context for each request
+app.use(expressAppContext<ContextData>(preRequestFn));
+
+// Example route
+app.get('/user', (req: Request, res: Response) => {
+  // Retrieve the current context, including request-specific data
+  const context = AppContext.context<ExpressRequestContext<ContextData>>();
+
+  // Respond with the user ID from the context
+  res.json({
+    message: 'Hello, User!',
+    userId: context.user,
+  });
+});
+
+// Start the server
+app.listen(3000, () => {
+  console.log('Server is running on http://localhost:3000');
+});
+```
+### fastify
+
+```typescript
+import Fastify from 'fastify';
+import { registerFastifyAppContext, getFastifyContext, setFastifyContext } from 'node-application-context';
+
+const fastify = Fastify();
+
+// Pre-request function to be executed before each request
+const preRequestFn = (req: IncomingMessage) => {
+  console.log('Pre-request function called for Fastify!');
+};
+
+// Register the AppContext middleware
+registerFastifyAppContext(fastify, preRequestFn);
+
+fastify.get('/user', async (request, reply) => {
+  // Get the current Fastify context
+  const context = getFastifyContext<{ userId: string }>();
+
+  // Set some data in the context
+  setFastifyContext({ userId: 'user123' });
+
+  // Send a response with the context data
+  return {
+    message: 'Hello from Fastify!',
+    userId: context.userId,
+  };
+});
+
+// Start the server
+fastify.listen({ port: 3000 }, (err, address) => {
+  if (err) throw err;
+  console.log(`Server running at ${address}`);
+});
+```
 ## License
 
 This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.

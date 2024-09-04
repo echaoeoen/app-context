@@ -1,24 +1,25 @@
-import { Request, Response, NextFunction, RequestHandler } from "express"; // Import the 'Response' type from the 'express' module.
-import AppContext from "../app-context";
-export interface RequestContext<T> {
+import e, { Request, Response, NextFunction, RequestHandler } from "express"; // Import the 'Response' type from the 'express' module.
+import AppContext, { ObjectType } from "../app-context";
+type ExpressRequestContext<T extends ObjectType<T>> = T & {
     req: Request;
-    data: T;
 }
 /**
- * A middleware function that sets up an AppContext for the current request.
- * This context contains the request and response objects, and a data object
- * that can be used to store arbitrary data.
- * @param req The request object.
- * @param res The response object.
- * @param next The next middleware function.
+ * Creates an Express middleware that starts a new context for each incoming request.
+ * The middleware calls the given preRequest function and waits for it to complete
+ * before calling the next middleware in the chain.
+ *
+ * The context data is set to include the request object and an empty data object.
+ * You can use AppContext.get() to retrieve the context data.
+ *
+ * @param preRequest A function to call before calling the next middleware.
+ * @returns A middleware function that starts a new context and calls the given preRequest function.
  */
-export const expressAppContext: RequestHandler = <T>(req: Request, _res: Response, next: NextFunction) => {
-  const context = AppContext.context<RequestContext<T>>();
-  context.startContext(() => {
-    context.set({
-      req,
-      data: {} as T,
-    });
+export const expressAppContext = <T extends ObjectType<T>>(preRequestFn: (req: Request, res?: Response) => void): RequestHandler => (req: Request, res: Response, next: NextFunction) => {
+  const context = AppContext.context<ExpressRequestContext<T>>();
+
+  context.startContext(async () => {
+    context.set({ req } as Partial<ExpressRequestContext<T>>);
+    await Promise.resolve(preRequestFn(req, res));
     next();
   });
 }
@@ -28,8 +29,8 @@ export const expressAppContext: RequestHandler = <T>(req: Request, _res: Respons
  * @returns The current express context.
  */
 
-export const getExpressContext = <T>() => {
-    return AppContext.context<RequestContext<T>>().get();
+export const getExpressContext = <T extends ObjectType<T>>() => {
+    return AppContext.context<ExpressRequestContext<T>>().get();
 }
 
 /**
@@ -37,6 +38,6 @@ export const getExpressContext = <T>() => {
  * @param contextData The context data to set.
  */
 
-export const setExpressContext = <T>(contextData: Partial<RequestContext<T>>) => {
-    AppContext.context<RequestContext<T>>().set(contextData);
+export const setExpressContext = <T extends ObjectType<T>>(contextData: Partial<ExpressRequestContext<T>>) => {
+    AppContext.context<ExpressRequestContext<T>>().set(contextData);
 }

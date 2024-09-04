@@ -1,8 +1,7 @@
 import * as UUID from 'uuid';
 import { AsyncLocalStorage } from 'async_hooks';
 
-type ObjectType<T> = { [key: string]: any } & (keyof T extends string ? {} : "T must only have string keys")
-
+export type ObjectType<T> = { [key: string]: any } & (keyof T extends string ? {} : "T must only have string keys")
 
 export default class AppContext<ContextDataType extends ObjectType<ContextDataType>> {
   context = new Map<string, Partial<ContextDataType>>();

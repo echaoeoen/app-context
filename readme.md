@@ -8,7 +8,7 @@ The `AppContext` library simplifies managing execution context across asynchrono
 Install the library via npm:
 
 ```bash
-npm install application-context
+npm install node-application-context
 ```
 
 You'll also need to install the `uuid` package as a peer dependency:
@@ -24,7 +24,7 @@ npm install uuid
 To use the `AppContext` library, define your context data type, initialize the context, and start using it within asynchronous functions.
 
 ```typescript
-import AppContext from 'application-context';
+import AppContext from 'node-application-context';
 
 // Define your context data structure
 type MyContextType = {
@@ -88,7 +88,7 @@ The `AppContext` library is particularly useful in scenarios where you need to m
 - Storing request-specific data like tracking IDs or logging information
 
 ```typescript
-import AppContext from 'application-context';
+import AppContext from 'node-application-context';
 
 type RequestContext = {
   requestId: string;

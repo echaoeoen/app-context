@@ -1,3 +1,10 @@
+## [1.0.2](https://github.com/echaoeoen/app-context/compare/v1.0.1...v1.0.2) (2024-09-04)
+
+
+### Bug Fixes
+
+* publish npm ([b5c9cdd](https://github.com/echaoeoen/app-context/commit/b5c9cdd8d0790706e5d1f34b2b4e99982568f633))
+
 ## [1.0.1](https://github.com/echaoeoen/app-context/compare/v1.0.0...v1.0.1) (2024-09-04)
 
 

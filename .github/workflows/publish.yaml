@@ -25,6 +25,9 @@ jobs:
 
       - name: Install dependencies
         run: yarn install --frozen-lockfile
+      
+      - name: Install dependencies
+        run: yarn build
 
       - name: Semantic Release
         uses: cycjimmy/semantic-release-action@v4

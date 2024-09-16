@@ -1,3 +1,10 @@
+## [1.1.1](https://github.com/echaoeoen/app-context/compare/v1.1.0...v1.1.1) (2024-09-04)
+
+
+### Bug Fixes
+
+* express and fastify docs ([e69a08f](https://github.com/echaoeoen/app-context/commit/e69a08f4c5315b3c4f806565157275d6a3c6a114))
+
 # [1.1.0](https://github.com/echaoeoen/app-context/compare/v1.0.4...v1.1.0) (2024-09-04)
 
 

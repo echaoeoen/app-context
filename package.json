@@ -1,6 +1,6 @@
 {
   "name": "node-application-context",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "This library simplifies the way you manage and pass data across deeply nested function calls by introducing a shared execution context. With this library, you no longer need to manually pass parameters between functions. Instead, you set context data at the start of an operation, and the data is accessible within every function call that happens within that context.",
   "main": "src/app-context.ts",
   "repository": {

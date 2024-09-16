@@ -13,13 +13,17 @@ module.exports = {
         '@semantic-release/npm',
         {
           npmPublish: true,
+          pkgRoot: "./dist",
         },
       ],
       '@semantic-release/github',
       [
         '@semantic-release/git',
         {
-          assets: ['CHANGELOG.md', 'package.json'],
+          assets: ['CHANGELOG.md', 'package.json',
+            "README.md",
+            "dist/**/*.{js,d.ts}"
+          ],
           message:
             // eslint-disable-next-line no-template-curly-in-string
             'chore(release): set `package.json` to ${nextRelease.version} [skip ci]\n\n${nextRelease.notes}',

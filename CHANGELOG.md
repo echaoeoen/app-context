@@ -1,3 +1,11 @@
+## [1.1.2](https://github.com/echaoeoen/app-context/compare/v1.1.1...v1.1.2) (2024-09-16)
+
+
+### Bug Fixes
+
+* release folder ([e49b5e6](https://github.com/echaoeoen/app-context/commit/e49b5e612e3efa56e45912af420f9d689a5f0fd1))
+* release folder ignore ts files ([dfc889d](https://github.com/echaoeoen/app-context/commit/dfc889dd49e4210893acb5eebf19d4a4e0ba253f))
+
 ## [1.1.1](https://github.com/echaoeoen/app-context/compare/v1.1.0...v1.1.1) (2024-09-04)
 
 

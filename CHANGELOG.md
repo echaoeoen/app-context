@@ -1,3 +1,11 @@
+## [1.1.4](https://github.com/echaoeoen/app-context/compare/v1.1.3...v1.1.4) (2025-02-11)
+
+
+### Bug Fixes
+
+* add clean project on build ([ec54162](https://github.com/echaoeoen/app-context/commit/ec54162498ff7eadba84495fb07721a90554ac87))
+* change namespace to aslina ([9ae2885](https://github.com/echaoeoen/app-context/commit/9ae28858c4cddeac49a2ecd1f9146cb4a9cb86ad))
+
 ## [1.1.3](https://github.com/echaoeoen/app-context/compare/v1.1.2...v1.1.3) (2024-09-16)
 
 

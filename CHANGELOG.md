@@ -1,3 +1,10 @@
+## [1.1.5](https://github.com/echaoeoen/app-context/compare/v1.1.4...v1.1.5) (2025-02-11)
+
+
+### Bug Fixes
+
+* public npm package ([63e4a94](https://github.com/echaoeoen/app-context/commit/63e4a94e6cbd605cec094d25b4d70013e6824760))
+
 ## [1.1.4](https://github.com/echaoeoen/app-context/compare/v1.1.3...v1.1.4) (2025-02-11)
 
 

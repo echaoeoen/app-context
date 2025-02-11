@@ -1,3 +1,10 @@
+## [1.1.6](https://github.com/echaoeoen/app-context/compare/v1.1.5...v1.1.6) (2025-02-11)
+
+
+### Bug Fixes
+
+* change package name ([edfac43](https://github.com/echaoeoen/app-context/commit/edfac4354b1c4717f48b89b887703a2a053ab5e3))
+
 ## [1.1.5](https://github.com/echaoeoen/app-context/compare/v1.1.4...v1.1.5) (2025-02-11)
 
 

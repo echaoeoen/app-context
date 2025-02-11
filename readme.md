@@ -8,7 +8,7 @@ The `AppContext` library simplifies managing execution context across asynchrono
 Install the library via npm:
 
 ```bash
-npm install node-application-context
+npm install @aslina/app-context
 ```
 
 You'll also need to install the `uuid` package as a peer dependency:
@@ -24,7 +24,7 @@ npm install uuid
 To use the `AppContext` library, define your context data type, initialize the context, and start using it within asynchronous functions.
 
 ```typescript
-import AppContext from 'node-application-context';
+import AppContext from '@aslina/app-context';
 
 // Define your context data structure
 type MyContextType = {
@@ -89,7 +89,7 @@ The `AppContext` library is particularly useful in scenarios where you need to m
 - Storing request-specific data like tracking IDs or logging information
 
 ```typescript
-import AppContext from 'node-application-context';
+import AppContext from '@aslina/app-context';
 
 type RequestContext = {
   requestId: string;
@@ -114,7 +114,7 @@ handleRequest();
 
 ```typescript
 import express, { Request, Response } from 'express';
-import AppContext, { expressAppContext, getExpressContext, setExpressContext, ExpressRequestContext } from 'node-application-context';
+import AppContext, { expressAppContext, getExpressContext, setExpressContext, ExpressRequestContext } from '@aslina/app-context';
 
 const app = express();
 interface ContextData {
@@ -151,7 +151,7 @@ app.listen(3000, () => {
 
 ```typescript
 import Fastify from 'fastify';
-import { registerFastifyAppContext, getFastifyContext, setFastifyContext } from 'node-application-context';
+import { registerFastifyAppContext, getFastifyContext, setFastifyContext } from '@aslina/app-context';
 
 const fastify = Fastify();
 

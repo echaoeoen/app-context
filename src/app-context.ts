@@ -29,9 +29,15 @@ export default class AppContext<ContextDataType extends ObjectType<ContextDataTy
   async startContext<PromiseType, ContextDataType extends ObjectType<ContextDataType>>(fn: () => void | Promise<PromiseType>): Promise<PromiseType> {
     const id = UUID.v4();
     this.context.set(id, {});
-    const res = await this.asyncLocalStorage.run(id, fn);
-    this.context.delete(id);
-    return res as PromiseType;
+    try {
+      const res = await this.asyncLocalStorage.run(id, fn);
+      return res as PromiseType;
+    } catch (e) {
+      throw e;  
+    }
+    finally {
+      this.context.delete(id);
+    }
   }
 
   /**

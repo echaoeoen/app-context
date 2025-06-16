@@ -1,3 +1,10 @@
+## [1.1.8](https://github.com/echaoeoen/app-context/compare/v1.1.7...v1.1.8) (2025-06-16)
+
+
+### Bug Fixes
+
+* remove potential memory leak in start context ([514e408](https://github.com/echaoeoen/app-context/commit/514e408aaac659e4142fe162fbcf21a04ac1d06c))
+
 ## [1.1.7](https://github.com/echaoeoen/app-context/compare/v1.1.6...v1.1.7) (2025-02-11)
 
 

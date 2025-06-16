@@ -1,3 +1,10 @@
+## [1.1.9](https://github.com/echaoeoen/app-context/compare/v1.1.8...v1.1.9) (2025-06-16)
+
+
+### Bug Fixes
+
+* ignore example ([a9946c3](https://github.com/echaoeoen/app-context/commit/a9946c3577c7d5564e45481d46f36125892ba15a))
+
 ## [1.1.8](https://github.com/echaoeoen/app-context/compare/v1.1.7...v1.1.8) (2025-06-16)
 
 
